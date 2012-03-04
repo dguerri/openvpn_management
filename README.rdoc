@@ -1,0 +1,48 @@
+= openvpn_management
+
+Ruby gem for openVPN (server) management interface interaction.
+
+<b><em>Note</em></b>
+
+Please keep in mind that this software is in alpha development stage.
+
+== Installation
+
+=== Via Github, for development
+
+    ~# git clone git://github.com/dguerri/openvpn_management.git
+    ~# cd openvpn_management
+    ~# bundle install
+    ~# rake install
+
+=== Via Rubygems
+
+    ~# gem install openvpn_management --pre
+
+== Usage
+
+=== Receiving data from an exporter (with eventmachine)
+
+   require 'Rubygems'
+   require 'openvpn_management'
+
+   s = OpenvpnManagement.new :host => "localhost", :port => 1234, :timeout => 10,  :password => "password"
+   s.version
+   s.status
+   s.stats
+   s.destroy
+
+== Contributing to openvpn_management
+ 
+* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
+* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
+* Fork the project
+* Start a feature/bugfix branch
+* Commit and push until you are happy with your contribution
+* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
+* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+
+== Copyright
+
+Copyright (C) 2012 Davide Guerri <davide.guerri@gmail.com>. See LICENSE.txt for further details.
+
