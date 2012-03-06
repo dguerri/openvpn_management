@@ -21,24 +21,54 @@ Please keep in mind that this software is in alpha development stage.
 
 = Usage
 
-   require 'Rubygems'
-   require 'openvpn_management'
+== Sample code
 
-   s = OpenvpnManagement.new :host => "localhost", :port => 1234, :timeout => 10,  :password => "password"
-   s.version
-   s.status
-   s.stats
-   s.destroy
+    require 'Rubygems'
+    require 'openvpn_management'
+    require 'pp'
 
-= Contributing to openvpn_management
- 
-* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
-* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
-* Fork the project
-* Start a feature/bugfix branch
-* Commit and push until you are happy with your contribution
-* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
-* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+    # Assuming you've a VPN server with management interface on TCP port 1194 protected with
+    # password 'mypassword'
+    vpn1 = OpenvpnManagement.new :host => 'localhost', :port => 1194, :password => 'mypassword'
+    pp vpn1.version
+    pp vpn1.stats
+    pp vpn1.status
+
+    pp vpn1.status[:clients].keys
+    pp vpn1.status[:routes].keys
+
+    vpn1.destroy
+
+== Sample output
+
+    # vpn1.version
+    "OpenVPN Version: OpenVPN 2.x-master x86_64-unknown-linux-gnu [SSL] [LZO2] [EPOLL] [eurephia] [MH] [PF_INET6] [IPv6 payload 20110522-1 (2.2.0)] built on Sep 15 2011\nManagement Version: 1\nEND\n"
+    # vpn1.stats
+    {:clients=>1, :bytes_input=>1335293, :bytes_output=>140845}
+    # vpn1.status
+{:clients=>
+  {"l2vpn_client_1_1_1"=>
+    [{:real_address=>"217.72.97.51:37698",
+      :bytes_received=>"1438510",
+      :bytes_sent=>"1456452",
+      :connected_since=>"Mon Mar  5 16:52:40 2012"}]},
+ :routes=>
+  {"e4:ce:8f:26:5f:8e"=>
+    {:real_address=>"217.72.97.51:37698",
+     :last_ref=>"Tue Mar  6 09:51:18 2012",
+     :common_name=>"l2vpn_client_1_1_1"},
+   "dc:2b:61:29:d2:d0"=>
+    {:real_address=>"217.72.97.51:37698",
+     :last_ref=>"Tue Mar  6 09:51:33 2012",
+     :common_name=>"l2vpn_client_1_1_1"}}}
+    # vpn1.status[:clients].keys
+    ["l2vpn_client_1_1_1"]
+    # vpn1.status[:routes].keys
+    ["e4:ce:8f:00:11:22", "dc:2b:61:aa:bb:cc"]
+
+= Note
+
+OpenVPN management interface isn't multi-client so destroy the OpenvpnManagement object as soon as you've finish using it.
 
 = Copyright
 
