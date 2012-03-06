@@ -106,9 +106,9 @@ class OpenvpnManagement
   def stats
     stats_info = issue_command("load-stats").split(',')
     {
-        :clients => stats_info[0].gsub("SUCCESS: nclients=", "").to_i,
-        :bytes_input => stats_info[1].gsub("bytesin=", "").to_i,
-        :bytes_output => stats_info[2].chop!.gsub("bytesout=", "").to_i
+        :clients => stats_info[0].gsub("nclients=", "").to_i,
+        :bytes_download => stats_info[1].gsub("bytesin=", "").to_i,
+        :bytes_upload => stats_info[2].chop!.gsub("bytesout=", "").to_i
     }
   end
 
