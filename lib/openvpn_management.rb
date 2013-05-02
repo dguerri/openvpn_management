@@ -59,7 +59,6 @@ class OpenvpnManagement
 
     c = issue_command "status"
     c.split("\n").each do |l|
-      puts l.inspect
 
       # End Information Markers
       if l == "ROUTING TABLE"
