@@ -58,14 +58,14 @@ class OpenvpnManagement
     routes = {}
 
     c = issue_command "status"
-    c.each do |l|
+    c.split("\n").each do |l|
 
       # End Information Markers
-      if l == "ROUTING TABLE\n"
+      if l == "ROUTING TABLE"
         client_list_flag = 0
       end
 
-      if l == "GLOBAL STATS\n"
+      if l == "GLOBAL STATS"
         routing_list_flag = 0
       end
 
@@ -85,16 +85,17 @@ class OpenvpnManagement
       # Update Routing Info List
       # Virtual Address,Common Name,Real Address,Last Ref
       if routing_list_flag == 1
-        route = l.split(',')
-        routes[route[0]] = { :common_name => route[1], :real_address=> route[2], :last_ref => route[3].chop }
+        route = []
+        route << l.split(',')
+        routes[route[0]] = { :common_name => route[1], :real_address=> route[2], :last_ref => route[3] }
       end
 
       # Start Information Markers
-      if l == "Common Name,Real Address,Bytes Received,Bytes Sent,Connected Since\n"
+      if l == "Common Name,Real Address,Bytes Received,Bytes Sent,Connected Since"
         client_list_flag = 1
       end
 
-      if l == "Virtual Address,Common Name,Real Address,Last Ref\n"
+      if l == "Virtual Address,Common Name,Real Address,Last Ref"
         routing_list_flag = 1
       end
     end
