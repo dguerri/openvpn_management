@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "openvpn_management"
-  s.version = "0.9.0.pre"
+  s.version = "0.9.4.pre"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Davide Guerri"]
-  s.date = "2012-03-04"
+  s.date = "2013-05-03"
   s.description = "openvpn_management is a ruby gem for openVPN (server) management interface interaction."
   s.email = "davide.guerri@gmail.com"
   s.extra_rdoc_files = [
@@ -24,12 +24,13 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "lib/openvpn_management.rb",
-    "lib/openvpn_management/version.rb"
+    "lib/openvpn_management/version.rb",
+    "openvpn_management.gemspec"
   ]
   s.homepage = "https://github.com/dguerri/openvpn_management"
   s.licenses = ["GPLv3"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.15"
+  s.rubygems_version = "1.8.24"
   s.summary = "openvpn_management a ruby gem for openVPN management interface interaction."
 
   if s.respond_to? :specification_version then
