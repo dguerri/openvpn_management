@@ -46,29 +46,36 @@ Please keep in mind that this software is in alpha development stage.
     # vpn1.stats
     {:clients=>1, :bytes_input=>1335293, :bytes_output=>140845}
     # vpn1.status
-{:clients=>
-  {"l2vpn_client_1_1_1"=>
-    [{:real_address=>"217.72.97.51:37698",
-      :bytes_received=>"1438510",
-      :bytes_sent=>"1456452",
-      :connected_since=>"Mon Mar  5 16:52:40 2012"}]},
- :routes=>
-  {"e4:ce:8f:26:5f:8e"=>
-    {:real_address=>"217.72.97.51:37698",
-     :last_ref=>"Tue Mar  6 09:51:18 2012",
-     :common_name=>"l2vpn_client_1_1_1"},
-   "dc:2b:61:29:d2:d0"=>
-    {:real_address=>"217.72.97.51:37698",
-     :last_ref=>"Tue Mar  6 09:51:33 2012",
-     :common_name=>"l2vpn_client_1_1_1"}}}
-    # vpn1.status[:clients].keys
-    ["l2vpn_client_1_1_1"]
-    # vpn1.status[:routes].keys
-    ["e4:ce:8f:00:11:22", "dc:2b:61:aa:bb:cc"]
+    {:clients=>
+     {"l2vpn_client_1_1_1"=>
+       [{:real_address=>"217.72.97.51:37698",
+         :bytes_received=>"1438510",
+         :bytes_sent=>"1456452",
+         :connected_since=>"Mon Mar  5 16:52:40 2012"}]},
+    :routes=>
+     {"e4:ce:8f:26:5f:8e"=>
+       {:real_address=>"217.72.97.51:37698",
+        :last_ref=>"Tue Mar  6 09:51:18 2012",
+        :common_name=>"l2vpn_client_1_1_1"},
+      "dc:2b:61:29:d2:d0"=>
+       {:real_address=>"217.72.97.51:37698",
+        :last_ref=>"Tue Mar  6 09:51:33 2012",
+        :common_name=>"l2vpn_client_1_1_1"}}}
+       # vpn1.status[:clients].keys
+       ["l2vpn_client_1_1_1"]
+       # vpn1.status[:routes].keys
+       ["e4:ce:8f:00:11:22", "dc:2b:61:aa:bb:cc"]
 
 = Note
 
 OpenVPN management interface isn't multi-client so destroy the OpenvpnManagement object as soon as you've finish using it.
+
+= Acknowledgements
+
+Thanks go to the following people who have contributed to this project:
+* Antonio Davoli
+* Alessandro Celestini
+* Ryan Huber (rawdigits) 
 
 = Copyright
 
