@@ -85,8 +85,7 @@ class OpenvpnManagement
       # Update Routing Info List
       # Virtual Address,Common Name,Real Address,Last Ref
       if routing_list_flag == 1
-        route = []
-        route << l.split(',')
+        route = l.split(',')
         routes[route[0]] = { :common_name => route[1], :real_address=> route[2], :last_ref => route[3] }
       end
 
