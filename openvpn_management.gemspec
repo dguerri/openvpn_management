@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "openvpn_management"
-  s.version = "0.9.4.pre"
+  s.version = "0.9.5.pre"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Davide Guerri"]
-  s.date = "2013-05-03"
+  s.date = "2013-05-16"
   s.description = "openvpn_management is a ruby gem for openVPN (server) management interface interaction."
   s.email = "davide.guerri@gmail.com"
   s.extra_rdoc_files = [
