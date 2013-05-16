@@ -19,7 +19,7 @@ class OpenvpnManagement
   module Version
     MAJOR = 0
     MINOR = 9
-    PATCH = 4
+    PATCH = 5
     BUILD = 'pre'
 
     STRING = [MAJOR, MINOR, PATCH, BUILD].compact.join('.')
